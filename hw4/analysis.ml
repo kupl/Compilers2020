@@ -68,7 +68,7 @@ module ABool = struct
   =fun b1 b2 -> Top (* TODO *)
 end
 
-module AValue = struct
+module AValue = struct 
   type t = Bot | Top | Neg | Zero | Pos | NonPos | NonZero | NonNeg
   let alpha : int -> t 
   =fun n -> if n = 0 then Zero else if n > 0 then Pos else Neg
@@ -154,7 +154,6 @@ let rec ceval : cmd -> AState.t -> AState.t
       else if beval b s = ABool.FF then (ceval c2 s)
       else if beval b s = ABool.Bot then State.bot
       else AState.lub (ceval c1 s) (ceval c2 s)
-
   | While (_, c) -> fix (ceval c) s
 
 and fix f s0 = if AState.order (f s0) s0 then s0 else fix f (f s0)
