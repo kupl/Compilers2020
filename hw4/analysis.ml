@@ -152,10 +152,14 @@ let rec ceval : cmd -> AState.t -> AState.t
   | If (b, c1, c2) -> 
       if beval b s = ABool.TT then (ceval c1 s)
       else if beval b s = ABool.FF then (ceval c2 s)
+      else if beval b s = ABool.Bot then State.bot
       else AState.lub (ceval c1 s) (ceval c2 s)
+
   | While (_, c) -> fix (ceval c) s
 
 and fix f s0 = if AState.order (f s0) s0 then s0 else fix f (f s0)
 
 let run : cmd -> AState.t
 =fun c -> ceval c AState.bot
+
+let _ = AState.print (run test3)
