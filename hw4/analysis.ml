@@ -152,7 +152,7 @@ let rec ceval : cmd -> AState.t -> AState.t
   | If (b, c1, c2) -> 
       if beval b s = ABool.TT then (ceval c1 s)
       else if beval b s = ABool.FF then (ceval c2 s)
-      else if beval b s = ABool.Bot then State.bot
+      else if beval b s = ABool.Bot then AState.bot
       else AState.lub (ceval c1 s) (ceval c2 s)
 
   | While (_, c) -> fix (ceval c) s
