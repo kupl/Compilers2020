@@ -1,5 +1,4 @@
-# COSE312 Compiler Project 2017, Korea University
-## Due: 6/14(Wed) 24:00
+# Goal
 
 The goal is to implement a translator and an optimizer for the S language.
 The source language ("S") and target language ("T") are defined in lecture slides (lecture 16).
