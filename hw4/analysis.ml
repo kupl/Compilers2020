@@ -154,7 +154,7 @@ let rec ceval : cmd -> AState.t -> AState.t
       else if beval b s = ABool.FF then (ceval c2 s)
       else if beval b s = ABool.Bot then AState.bot
       else AState.lub (ceval c1 s) (ceval c2 s)
-  | While (_, c) -> fix (ceval c) s
+  | While (_, c) -> fix (fun s -> AState.lub s (ceval c s)) s
 
 and fix f s0 = if AState.order (f s0) s0 then s0 else fix f (f s0)
 
