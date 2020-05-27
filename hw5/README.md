@@ -1,7 +1,7 @@
 # Goal
 
 The goal is to implement a translator and an optimizer for the S language.
-The source language ("S") and target language ("T") are defined in lecture slides (lecture 16).
+The source language ("S") and target language ("T") are defined in lecture slides (lecture 11).
 
 This package includes the following files:
 - [lexer.mll]: the lexer specification for ocamllex
