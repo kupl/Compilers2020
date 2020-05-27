@@ -19,19 +19,19 @@ let main () =
       let s_pgm = Parser.program Lexer.start lexbuf in
       let _ = print_endline "== source program ==";
               S.pp s_pgm in
-      let _ = print_endline "== execute the source program ==";
+      let _ = print_endline "== execution of the source program ==";
               (try S.execute s_pgm;
               with (Failure s) -> print_endline ("Error: "^s)) in
       let t_pgm = Translator.translate s_pgm in
       let _ = print_endline "== translated target program ==";
               T.pp  t_pgm in
-      let _ = print_endline "== execute the translated program ==";
+      let _ = print_endline "== execution of the translated program ==";
               (try T.execute t_pgm
               with (Failure s) -> print_endline ("Error: "^s)) in
       let t_pgm_opt = Optimizer.optimize t_pgm in
       let _ = print_endline "== optimized target program ==";
               T.pp t_pgm_opt in
-      let _ = print_endline "== execute the optimized target program ==";
+      let _ = print_endline "== execution the optimized target program ==";
               (try T.execute t_pgm_opt
                with (Failure s) -> print_endline ("Error: "^s)) in
         ()
