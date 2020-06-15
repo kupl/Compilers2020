@@ -20,6 +20,7 @@ verify : S.program -> bool
 (T 프로그램을 이용하여 분석한다면, `Translator.translate`를 `verify`에서 호출하십시오.)
 
 이번 과제에서는 분석기의 속도도 채점에 고려합니다. 최대 소요 시간은 5초 입니다. 분석 비용이 5초를 넘으면 false를 반환하고 종료하세요.
+(`Sys.time` 을 참고하세요. [참고링크](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Sys.html))
 
 ## 빌드 방법
 
