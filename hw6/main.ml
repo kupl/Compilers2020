@@ -20,9 +20,9 @@ let main () =
       let _ = print_endline "== source program ==";
               S.pp s_pgm in
       let _ = print_endline "== analyze the program ==" in
-      let bugs = Analyzer.verify s_pgm in
-      let _ = print_endline (string_of_int bugs ^ " bugs found ") in
-        if bugs = 0 then
+      let safe = Analyzer.verify s_pgm in
+      let _ = print_endline ("program is " ^ (if safe then "safe" else "unsafe")) in
+        if safe then
           let _ = print_endline "== execute the source program ==";
                   (try S.execute s_pgm;
                   with (Failure s) -> print_endline ("Error: "^s)) in
